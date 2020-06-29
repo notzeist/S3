@@ -5,12 +5,15 @@
 //  Created by Ondrej Rafaj on 19/04/2018.
 //
 
+#if canImport(FoundationNetworking)
+	import FoundationNetworking
+#endif
 import Foundation
 import Vapor
 import HTTP
 
 extension S3 {
-    
+
     /// Make an S3 request
     func make(request url: URL, method: HTTPMethod, headers: HTTPHeaders, data: Data? = nil, cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy, on container: Container) throws -> Future<Response> {
         var request = URLRequest(url: url, cachePolicy: cachePolicy)
